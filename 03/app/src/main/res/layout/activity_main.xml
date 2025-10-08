@@ -7,10 +7,17 @@
     android:shrinkColumns="*">
 
     <TextView
-        android:id="@+id/txtShow"
+        android:id="@+id/displayOperation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="48dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="48sp"
         tools:layout_editor_absoluteX="20dp"
         android:background="@drawable/border"/>
 
