@@ -11,9 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     private TextView txtResult;
     private RadioGroup dish, drink, serving;
-    private RadioButton pork, chicken, rice;
-    private RadioButton juice, blacktea, greentea;
-    private RadioButton one, two, three;
     private Button submit;
     private String str, s1, s2, s3;
     private int summary, p1, p2, p3;
@@ -30,18 +27,6 @@ public class MainActivity extends AppCompatActivity {
         dish = (RadioGroup) findViewById(R.id.dish);
         drink = (RadioGroup) findViewById(R.id.drink);
         serving = (RadioGroup) findViewById(R.id.serving);
-
-        pork = (RadioButton) findViewById(R.id.pork);
-        chicken = (RadioButton) findViewById(R.id.chicken);
-        rice = (RadioButton) findViewById(R.id.rice);
-
-        juice = (RadioButton) findViewById(R.id.juice);
-        blacktea = (RadioButton) findViewById(R.id.blacktea);
-        greentea = (RadioButton) findViewById(R.id.greentea);
-
-        one = (RadioButton) findViewById(R.id.one);
-        two = (RadioButton) findViewById(R.id.two);
-        three = (RadioButton) findViewById(R.id.three);
 
         dish.setOnCheckedChangeListener(main_dish);
         drink.setOnCheckedChangeListener(Drink);

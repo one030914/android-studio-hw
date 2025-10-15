@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="佳佳速食外送"
+        android:textSize="32dp" />
+
+    <GridView
+        android:id="@+id/GridView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="6dp"
+        android:numColumns="2"
+        android:padding="10dp"
+        android:verticalSpacing="6dp"
+        android:gravity="center"/>
+
+    <ImageView android:id="@+id/imgShow"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/GridView01"
+        android:scaleType="fitCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/serving"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="一份" />
+
+        <RadioButton
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="兩份" />
+
+        <RadioButton
+            android:id="@+id/three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="三份" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="確定" />
+
+    <TextView
+        android:id="@+id/txtresult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"/>
+
+</LinearLayout>
