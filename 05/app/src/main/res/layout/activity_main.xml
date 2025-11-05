@@ -25,13 +25,6 @@
         android:verticalSpacing="6dp"
         android:gravity="center"/>
 
-    <ImageView android:id="@+id/imgShow"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/GridView01"
-        android:scaleType="fitCenter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <RadioGroup
         android:id="@+id/serving"
         android:layout_width="match_parent"
