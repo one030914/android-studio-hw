@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView lstPrefer;
     private TextView txtresult;
 
+    private DrinkAdapter drinkadapter;
+
     private int[] mealIds = new int[]{R.drawable.img01, R.drawable.img02, R.drawable.img03, R.drawable.img04};
     private int[] drinkIds = new int[]{R.drawable.blacktea, R.drawable.latte,R.drawable.cola};
     private String[] drinks = new String[] {"冰紅茶", "熱拿鐵", "可樂"};
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 建立自訂的 Adapter
         MealsAdapter mealsAdapter = new MealsAdapter(this);
-        DrinkAdapter drinkadapter = new DrinkAdapter(this);
+        drinkadapter = new DrinkAdapter(this);
 
         count = drinkadapter.getCount();
 
@@ -130,12 +132,11 @@ public class MainActivity extends AppCompatActivity {
             TextView txtName = ((TextView) convertView.findViewById(R.id.txtName));
             TextView txtengName = ((TextView) convertView.findViewById(R.id.txtengName));
 
-            // 設定元件內容
             boolean isChecked = lstPrefer.isItemChecked(position);
             checkedTextView.setChecked(isChecked);
+            // 設定元件內容
             imgLogo.setImageResource(drinkIds[position]);
             txtName.setText(drinks[position]);
-            //或 txtName.setText(""+getItem(position));
             txtengName.setText(engNames[position]);
 
             return convertView;
@@ -182,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
                     str = "你選擇" + s1 + selAll + " 共 " + summary + " 元";
                     txtresult.setText(str);
                 }
+
+                drinkadapter.notifyDataSetChanged();
             }
         };
 }
