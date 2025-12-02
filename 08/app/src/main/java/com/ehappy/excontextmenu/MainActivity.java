@@ -1,5 +1,6 @@
 package com.ehappy.excontextmenu;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -11,6 +12,11 @@ import android.view.ContextMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     TextView txtShow1;
     TextView txtShow2;
 
-//    private int[] mealIds = new int[]{R.drawable.img01, R.drawable.img02, R.drawable.img03, R.drawable.img04};
+    private int[] hotelIds = new int[]{R.drawable.img01, R.drawable.img02, R.drawable.img03, R.drawable.img04};
 
-    String name = "墾丁中信飯店", phone;
+    String name, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,33 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        GridView hotels = (GridView) findViewById(R.id.hotels);
+
+        HotelsAdapter hotelsAdapter = new HotelsAdapter(this);
+        hotels.setAdapter(hotelsAdapter);
+        hotels.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                switch (position){
+                    case 0:
+                        name = "墾丁福華飯店";
+                        phone = "088862323";
+                        break;
+                    case 1:
+                        name = "河堤墾丁渡假酒店";
+                        phone = "088893138";
+                        break;
+                    case 2:
+                        name = "墾丁凱悅會館";
+                        phone = "0938856181";
+                        break;
+                    case 3:
+                        name = "墾丁凱薩飯店";
+                        phone = "088861888";
+                        break;
+                }
+            }
+        });
 
         myLayout=(ConstraintLayout)findViewById(R.id.myLayout);
         txtShow1=(TextView)findViewById(R.id.txtShow1);
@@ -62,8 +95,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent();
         switch (item.getItemId()){
             case MENU_HOTELMAP:
-                uri = Uri.parse("geo:0,0?q="+name);
-                intent = new Intent(Intent.ACTION_VIEW, uri);
+                String query = Uri.encode(name);
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + query);
+                intent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 intent.setPackage("com.google.android.apps.maps");
                 startActivity(intent);
                 break;
@@ -84,5 +118,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    class HotelsAdapter extends BaseAdapter {
+        private Context mContext;
+        public HotelsAdapter(Context c){
+            mContext=c;
+        }
+        @Override
+        public int getCount(){
+            return hotelIds.length; // 圖片共有多少張
+        }
+        @Override
+        public Object getItem(int position){
+            return position;
+        }
+        @Override
+        public long getItemId(int position){
+            return position; // 目前圖片索引
+        }
+
+        // 定義 GridView 顯示的圖片
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent){
+            ImageView iv = new ImageView(mContext);
+            iv.setImageResource(hotelIds[position]);
+            iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            iv.setLayoutParams(new GridView.LayoutParams(200, 150));
+            return iv;
+        }
     }
 }
