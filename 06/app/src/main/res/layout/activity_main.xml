@@ -16,7 +16,9 @@
         android:numColumns="2"
         android:padding="10dp"
         android:verticalSpacing="6dp"
-        android:gravity="center" />
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/lstPrefer"
